@@ -1,0 +1,15 @@
+services:
+  ratings:
+    build: .
+    image: ghcr.io/supakkavee/bookinfo-ratings:dev
+    ports:
+      - "8080:8080"
+    environment: 
+      SERVICE_VERSION: v2
+      MONGO_DB_URL: mongodb://mongodb:27017/ratings
+  mongodb:
+    image: bitnami/mongodb:5.0.2-debian-10-r2
+    #ports:
+    #  - "27017:27017"
+    volumes:
+      - ./databases:/docker-entrypoint-initdb.d 
