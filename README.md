@@ -28,6 +28,12 @@ docker run -d --name ratings -p 8080:8080 --link mongodb:mongodb \
 
 * Test with path `/ratings/1` and `/health`
 
+## How to run with Docker Compose
+
+```bash
+docker-compose up
+```
+
 ## Website
 
 [Opsta (Thailand) Co., Ltd.](https://www.opsta.co.th)
