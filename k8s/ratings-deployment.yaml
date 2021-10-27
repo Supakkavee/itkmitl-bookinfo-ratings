@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bookinfo-dev-ratings
+  namespace: student14-bookinfo-dev
+  labels:
+    app: bookinfo-dev-ratings
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bookinfo-dev-ratings
+  template:
+    metadata:
+      labels:
+        app: bookinfo-dev-ratings
+    spec:
+      containers:
+      - name: bookinfo-dev-ratings
+        image: ghcr.io/supakkavee/bookinfo-ratings:dev
+        imagePullPolicy: Always
+        env:
+        - name: SERVICE_VERSION
+          value: v2
+        - name: MONGO_DB_URL
+          value: mongodb://bookinfo-dev-ratings-mongodb:27017/ratings
+        - name: MONGO_DB_USERNAME
+          value: ratings
+        - name: MONGO_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: bookinfo-dev-ratings-mongodb-secret
+              key: mongodb-password
+      imagePullSecrets:
+      - name: registry-bookinfo
+      
