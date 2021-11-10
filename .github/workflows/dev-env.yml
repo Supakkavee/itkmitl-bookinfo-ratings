@@ -12,7 +12,7 @@ jobs:
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v1
         with:
-          registry: ghcr.io
+          registry: ghcr.io/supakkavee/bookinfo-ratings:dev
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push
@@ -20,5 +20,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: bookinfo-ratings:dev
+          tags: user/app:latest
       
