@@ -6,12 +6,13 @@ ratings:
   imagePullSecrets: registry-bookinfo
   port: 8080
 ingress:
-  annotations:
-    kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
   host: itkmitl.bookinfo.dev.opsta.net
   path: "/student14/ratings(/|$)(.*)"
   serviceType: ClusterIP
+
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
 extraEnv:
   SERVICE_VERSION: v2
   MONGO_DB_URL: mongodb://bookinfo-dev-ratings-mongodb:27017/ratings
@@ -19,3 +20,5 @@ extraEnv:
 extraEnvSecret:
   MONGO_DB_PASSWORD:
     bookinfo-dev-ratings-mongodb-secret: mongodb-password
+  MONGO_ROOT_PASSWORD:
+    bookinfo-dev-ratings-mongodb-secret: mongodb-root-password
