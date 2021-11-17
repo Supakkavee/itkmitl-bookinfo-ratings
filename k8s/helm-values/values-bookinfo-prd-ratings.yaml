@@ -17,6 +17,7 @@ extraEnv:
   SERVICE_VERSION: v2
   MONGO_DB_URL: mongodb://bookinfo-prd-ratings-mongodb:27017/ratings
   MONGO_DB_USERNAME: ratings
+  COMMIT_SHA: CHANGEME
 extraEnvSecret:
   MONGO_DB_PASSWORD:
     bookinfo-prd-ratings-mongodb-secret: mongodb-password
