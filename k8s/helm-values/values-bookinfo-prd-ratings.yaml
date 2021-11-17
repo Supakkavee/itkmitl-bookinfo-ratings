@@ -1,0 +1,25 @@
+ratings:
+  namespace: student14-bookinfo-prd
+  image: ghcr.io/supakkavee/bookinfo-ratings
+  tag: prd
+  replicas: 1
+  imagePullSecrets: registry-bookinfo
+  port: 8080
+ingress:
+  host: itkmitl.bookinfo.opsta.net
+  path: "/student14/ratings(/|$)(.*)"
+  serviceType: ClusterIP
+
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+extraEnv:
+  SERVICE_VERSION: v2
+  MONGO_DB_URL: mongodb://bookinfo-prd-ratings-mongodb:27017/ratings
+  MONGO_DB_USERNAME: ratings
+  COMMIT_SHA: CHANGEME
+extraEnvSecret:
+  MONGO_DB_PASSWORD:
+    bookinfo-prd-ratings-mongodb-secret: mongodb-password
+  MONGO_ROOT_PASSWORD:
+    bookinfo-prd-ratings-mongodb-secret: mongodb-root-password

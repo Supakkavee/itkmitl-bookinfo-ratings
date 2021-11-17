@@ -1,0 +1,10 @@
+image:
+  tag: 5.0.3-debian-10-r30
+auth:
+  enabled: true
+  username: ratings
+  database: ratings
+  existingSecret: bookinfo-dev-ratings-mongodb-secret
+persistence:
+  enabled: false
+initdbScriptsConfigMap: bookinfo-dev-ratings-mongodb-initdb
