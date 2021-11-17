@@ -48,6 +48,6 @@ jobs:
     needs: deploy
     runs-on: ubuntu-20.04
     steps:
-      - name: Run acceptance Test
+      - name: Test
       - run: curl http://itkmitl.bookinfo.dev.opsta.net/student14/ratings/health | grep "Ratings is working"
 
